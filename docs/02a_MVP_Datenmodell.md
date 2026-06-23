@@ -652,6 +652,55 @@ Speichert manuelle oder KI-generierte Berichte.
 - final
 - archiviert
 
+## 5.x Tabelle: `unterrichtstermin`
+
+### Zweck
+
+Speichert regelmäßige Unterrichtstermine einer Lerngruppe.
+
+Ein Unterrichtstermin beschreibt nicht eine einzelne Unterrichtsstunde, sondern einen wiederkehrenden Termin im Stundenplan.
+
+### Felder
+
+| Feldname | Typ | Pflicht | Beschreibung |
+|---|---|---:|---|
+| `id` | Automatische ID | ja | Interne eindeutige ID |
+| `lerngruppe_id` | Verknüpfung | ja | Verweis auf `lerngruppe` |
+| `wochentag` | Auswahl | ja | Wochentag |
+| `stunde_von` | Zahl/Text | nein | Erste Schulstunde |
+| `stunde_bis` | Zahl/Text | nein | Letzte Schulstunde |
+| `beginn` | Uhrzeit | nein | Beginn |
+| `ende` | Uhrzeit | nein | Ende |
+| `raum` | Text | nein | Raum |
+| `rhythmus` | Auswahl | nein | Wiederholungsrhythmus |
+| `gueltig_ab` | Datum | nein | Beginn der Gültigkeit |
+| `gueltig_bis` | Datum | nein | Ende der Gültigkeit |
+| `aktiv` | Checkbox | ja | Termin ist aktiv |
+| `bemerkung` | Langer Text | nein | Bemerkung |
+
+### Auswahlwerte für `wochentag`
+
+- Montag
+- Dienstag
+- Mittwoch
+- Donnerstag
+- Freitag
+- Samstag
+
+### Auswahlwerte für `rhythmus`
+
+- wöchentlich
+- A-Woche
+- B-Woche
+- einmalig
+- unregelmäßig
+
+### Hinweise
+
+Aus `unterrichtstermin` können konkrete Einträge in `unterrichtsstunde` erzeugt werden.
+
+Die Tabelle ermöglicht eine Stundenplan- oder Kalenderansicht.
+
 ---
 
 # 6. Zentrale Beziehungen
