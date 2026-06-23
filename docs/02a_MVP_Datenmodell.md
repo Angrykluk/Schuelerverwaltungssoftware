@@ -2,7 +2,7 @@
 
 **Datei:** `02a_MVP_Datenmodell.md`  
 **Projekt:** Teacher Intelligence System (TIS)  
-**Version:** 0.1  
+**Version:** 0.2  
 **Status:** Entwurf  
 **Letzte Änderung:** 2026-06-23
 
@@ -27,6 +27,7 @@ Das MVP soll ermöglichen:
 - Schülerakten anzulegen
 - Schüler mehreren Lerngruppen zuzuordnen
 - mehrere Schuljahre abzubilden
+- regelmäßige Unterrichtstermine im persönlichen Stundenplan abzubilden
 - Unterrichtsstunden zu dokumentieren
 - Fehlzeiten pro Unterrichtsstunde zu erfassen
 - Leistungen und Noten zu speichern
@@ -60,16 +61,17 @@ Für das MVP werden folgende Tabellen benötigt:
 3. `fach`
 4. `lerngruppe`
 5. `schueler_lerngruppe`
-6. `unterrichtsstunde`
-7. `anwesenheit`
-8. `leistungsnachweis`
-9. `leistungsbewertung`
-10. `kompetenz`
-11. `kompetenzbewertung`
-12. `beobachtung`
-13. `dokument`
-14. `dokument_schueler`
-15. `bericht`
+6. `unterrichtstermin`
+7. `unterrichtsstunde`
+8. `anwesenheit`
+9. `leistungsnachweis`
+10. `leistungsbewertung`
+11. `kompetenz`
+12. `kompetenzbewertung`
+13. `beobachtung`
+14. `dokument`
+15. `dokument_schueler`
+16. `bericht`
 
 ---
 
@@ -256,7 +258,58 @@ Eine Lerngruppe enthält viele Schüler.
 
 ---
 
-## 5.6 Tabelle: `unterrichtsstunde`
+## 5.6 Tabelle: `unterrichtstermin`
+
+### Zweck
+
+Speichert regelmäßige Unterrichtstermine einer Lerngruppe.
+
+Ein Unterrichtstermin beschreibt nicht eine einzelne Unterrichtsstunde, sondern einen wiederkehrenden Termin im Stundenplan.
+
+### Felder
+
+| Feldname | Typ | Pflicht | Beschreibung |
+|---|---|---:|---|
+| `id` | Automatische ID | ja | Interne eindeutige ID |
+| `lerngruppe_id` | Verknüpfung | ja | Verweis auf `lerngruppe` |
+| `wochentag` | Auswahl | ja | Wochentag |
+| `stunde_von` | Zahl/Text | nein | Erste Schulstunde |
+| `stunde_bis` | Zahl/Text | nein | Letzte Schulstunde |
+| `beginn` | Uhrzeit | nein | Beginn |
+| `ende` | Uhrzeit | nein | Ende |
+| `raum` | Text | nein | Raum |
+| `rhythmus` | Auswahl | nein | Wiederholungsrhythmus |
+| `gueltig_ab` | Datum | nein | Beginn der Gültigkeit |
+| `gueltig_bis` | Datum | nein | Ende der Gültigkeit |
+| `aktiv` | Checkbox | ja | Termin ist aktiv |
+| `bemerkung` | Langer Text | nein | Bemerkung |
+
+### Auswahlwerte für `wochentag`
+
+- Montag
+- Dienstag
+- Mittwoch
+- Donnerstag
+- Freitag
+- Samstag
+
+### Auswahlwerte für `rhythmus`
+
+- wöchentlich
+- A-Woche
+- B-Woche
+- einmalig
+- unregelmäßig
+
+### Hinweise
+
+Aus `unterrichtstermin` können konkrete Einträge in `unterrichtsstunde` erzeugt werden.
+
+Die Tabelle ermöglicht eine Stundenplan- oder Kalenderansicht.
+
+---
+
+## 5.7 Tabelle: `unterrichtsstunde`
 
 ### Zweck
 
@@ -284,7 +337,7 @@ Unterrichtsstunden bilden die Grundlage für Fehlzeiten, Beobachtungen und stund
 
 ---
 
-## 5.7 Tabelle: `anwesenheit`
+## 5.8 Tabelle: `anwesenheit`
 
 ### Zweck
 
@@ -333,7 +386,7 @@ Speichert Anwesenheit, Fehlzeiten und Verspätungen pro Schüler und Unterrichts
 
 ---
 
-## 5.8 Tabelle: `leistungsnachweis`
+## 5.9 Tabelle: `leistungsnachweis`
 
 ### Zweck
 
@@ -370,7 +423,7 @@ Ein Leistungsnachweis beschreibt das Ereignis, nicht das individuelle Ergebnis.
 
 ---
 
-## 5.9 Tabelle: `leistungsbewertung`
+## 5.10 Tabelle: `leistungsbewertung`
 
 ### Zweck
 
@@ -403,7 +456,7 @@ Speichert das Ergebnis eines Schülers zu einem Leistungsnachweis.
 
 ---
 
-## 5.10 Tabelle: `kompetenz`
+## 5.11 Tabelle: `kompetenz`
 
 ### Zweck
 
@@ -432,7 +485,7 @@ Speichert bewertbare Kompetenzen.
 
 ---
 
-## 5.11 Tabelle: `kompetenzbewertung`
+## 5.12 Tabelle: `kompetenzbewertung`
 
 ### Zweck
 
@@ -472,7 +525,7 @@ Speichert den Kompetenzstand eines Schülers zu einem Zeitpunkt.
 
 ---
 
-## 5.12 Tabelle: `beobachtung`
+## 5.13 Tabelle: `beobachtung`
 
 ### Zweck
 
@@ -520,7 +573,7 @@ Speichert pädagogische Beobachtungen, Notizen und Gesprächsnotizen.
 
 ---
 
-## 5.13 Tabelle: `dokument`
+## 5.14 Tabelle: `dokument`
 
 ### Zweck
 
@@ -583,7 +636,7 @@ Dateien können lokal oder in einem Cloudspeicher liegen.
 
 ---
 
-## 5.14 Tabelle: `dokument_schueler`
+## 5.15 Tabelle: `dokument_schueler`
 
 ### Zweck
 
@@ -612,7 +665,7 @@ Ein Dokument kann einem oder mehreren Schülern zugeordnet sein.
 
 ---
 
-## 5.15 Tabelle: `bericht`
+## 5.16 Tabelle: `bericht`
 
 ### Zweck
 
@@ -652,55 +705,6 @@ Speichert manuelle oder KI-generierte Berichte.
 - final
 - archiviert
 
-## 5.16 Tabelle: `unterrichtstermin`
-
-### Zweck
-
-Speichert regelmäßige Unterrichtstermine einer Lerngruppe.
-
-Ein Unterrichtstermin beschreibt nicht eine einzelne Unterrichtsstunde, sondern einen wiederkehrenden Termin im Stundenplan.
-
-### Felder
-
-| Feldname | Typ | Pflicht | Beschreibung |
-|---|---|---:|---|
-| `id` | Automatische ID | ja | Interne eindeutige ID |
-| `lerngruppe_id` | Verknüpfung | ja | Verweis auf `lerngruppe` |
-| `wochentag` | Auswahl | ja | Wochentag |
-| `stunde_von` | Zahl/Text | nein | Erste Schulstunde |
-| `stunde_bis` | Zahl/Text | nein | Letzte Schulstunde |
-| `beginn` | Uhrzeit | nein | Beginn |
-| `ende` | Uhrzeit | nein | Ende |
-| `raum` | Text | nein | Raum |
-| `rhythmus` | Auswahl | nein | Wiederholungsrhythmus |
-| `gueltig_ab` | Datum | nein | Beginn der Gültigkeit |
-| `gueltig_bis` | Datum | nein | Ende der Gültigkeit |
-| `aktiv` | Checkbox | ja | Termin ist aktiv |
-| `bemerkung` | Langer Text | nein | Bemerkung |
-
-### Auswahlwerte für `wochentag`
-
-- Montag
-- Dienstag
-- Mittwoch
-- Donnerstag
-- Freitag
-- Samstag
-
-### Auswahlwerte für `rhythmus`
-
-- wöchentlich
-- A-Woche
-- B-Woche
-- einmalig
-- unregelmäßig
-
-### Hinweise
-
-Aus `unterrichtstermin` können konkrete Einträge in `unterrichtsstunde` erzeugt werden.
-
-Die Tabelle ermöglicht eine Stundenplan- oder Kalenderansicht.
-
 ---
 
 # 6. Zentrale Beziehungen
@@ -729,10 +733,24 @@ Eine Lerngruppe gehört zu:
 Eine Lerngruppe kann haben:
 
 - mehrere Schüler
+- mehrere Unterrichtstermine
 - mehrere Unterrichtsstunden
 - mehrere Leistungsnachweise
 - mehrere Beobachtungen
 - mehrere Kompetenzbewertungen
+
+---
+
+## Unterrichtstermin
+
+Ein Unterrichtstermin gehört zu:
+
+- einer Lerngruppe
+
+Ein Unterrichtstermin kann genutzt werden, um:
+
+- konkrete Unterrichtsstunden zu erzeugen
+- eine Wochen- oder Terminübersicht darzustellen
 
 ---
 
@@ -819,6 +837,7 @@ schueler
 
 ```text
 lerngruppe
+  ├── unterrichtstermin
   └── unterrichtsstunde
         ├── anwesenheit
         ├── beobachtung
@@ -859,6 +878,11 @@ Das MVP-Datenmodell muss folgende Fragen beantworten können:
 - Welche Dokumente sind einem Schüler zugeordnet?
 - Welche Berichte wurden zu einem Schüler erstellt?
 
+## Unterrichtstermine
+
+- Welche Unterrichtstermine hat eine Lerngruppe im Wochenplan?
+- Welche Unterrichtsstunden sind aus einem Unterrichtstermin entstanden oder geplant?
+
 ## Fehlzeiten
 
 - Wie viele Unterrichtsstunden hat ein Schüler gefehlt?
@@ -898,29 +922,35 @@ Schuljahre werden bereits im MVP eingeführt, weil Schüler über mehrere Jahre 
 
 Das System arbeitet mit Lerngruppen, weil Fachunterricht, Kurse, Tutorengruppen und Klassenunterricht unterschiedlich organisiert sein können.
 
-## MVP-DM-004 Fehlzeiten pro Unterrichtsstunde
+## MVP-DM-004 Unterrichtstermine getrennt von Unterrichtsstunden
+
+Ein Unterrichtstermin beschreibt einen wiederkehrenden Stundenplantermin.
+
+Eine Unterrichtsstunde beschreibt eine konkrete Stunde an einem konkreten Datum.
+
+## MVP-DM-005 Fehlzeiten pro Unterrichtsstunde
 
 Fehlzeiten werden auf Unterrichtsstunden bezogen, nicht nur auf ganze Tage.
 
-## MVP-DM-005 Leistungen zweistufig modellieren
+## MVP-DM-006 Leistungen zweistufig modellieren
 
 Ein Leistungsnachweis beschreibt die Aufgabe.
 
 Eine Leistungsbewertung beschreibt das Ergebnis eines einzelnen Schülers.
 
-## MVP-DM-006 Kontakte zunächst vereinfacht
+## MVP-DM-007 Kontakte zunächst vereinfacht
 
 Eltern- und Adressdaten werden im MVP als Freitext in der Schülertabelle gespeichert.
 
-## MVP-DM-007 Kompetenzen zunächst vereinfacht
+## MVP-DM-008 Kompetenzen zunächst vereinfacht
 
 Kompetenzen werden im MVP mit einer festen vierstufigen Skala bewertet.
 
-## MVP-DM-008 Dokumente als Links
+## MVP-DM-009 Dokumente als Links
 
 Dokumente werden im MVP primär über Cloud-Links oder Dateipfade referenziert.
 
-## MVP-DM-009 KI vorbereitet, aber nicht vollständig modelliert
+## MVP-DM-010 KI vorbereitet, aber nicht vollständig modelliert
 
 Berichte und KI-generierte Inhalte sind bereits vorbereitet.
 
