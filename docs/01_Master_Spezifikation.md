@@ -748,6 +748,31 @@ Es werden keine Daten gespeichert.
 
 Die Lehrkraft kann die Auswirkungen vorab prüfen.
 
+### REQ-076 Pseudonymisierte KI-Verarbeitung
+
+Vor der Übermittlung an externe KI-Systeme können personenbezogene Daten automatisch pseudonymisiert werden.
+
+Zu ersetzende Daten:
+
+- Namen
+- Geburtsdaten
+- E-Mail-Adressen
+- Elternnamen
+- Schulnamen
+- Lehrernamen
+
+Die Zuordnung bleibt ausschließlich innerhalb des Systems gespeichert.
+
+---
+
+### REQ-077 KI-Datenschutzmodus
+
+Für jede KI-Funktion kann festgelegt werden:
+
+- lokale Verarbeitung
+- pseudonymisierte Cloud-Verarbeitung
+- vollständige Cloud-Verarbeitung
+
 ---
 
 # 6. Kann-Anforderungen
