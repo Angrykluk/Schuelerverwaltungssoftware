@@ -652,7 +652,7 @@ Speichert manuelle oder KI-generierte Berichte.
 - final
 - archiviert
 
-## 5.x Tabelle: `unterrichtstermin`
+## 5.16 Tabelle: `unterrichtstermin`
 
 ### Zweck
 
