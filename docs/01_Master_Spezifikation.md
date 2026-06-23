@@ -1,6 +1,6 @@
 # Teacher Intelligence System (TIS)
 
-**Version:** 0.2  
+**Version:** 0.3 
 **Status:** Entwurf  
 **Letzte Änderung:** 2026-06-23
 
@@ -516,6 +516,237 @@ Beispiele:
 - Löschung
 - KI-Bericht erzeugt
 - Dokument hochgeladen
+
+## Bereich J: KI-gestützte Datenerfassung
+
+### REQ-059 Cloudspeicher-Integration
+
+Das System kann Dokumente in Cloudspeichern ablegen oder referenzieren.
+
+Beispiele:
+
+- OneDrive
+- Nextcloud
+- SharePoint
+- lokale Netzlaufwerke
+- SMB-Freigaben
+
+---
+
+### REQ-060 Zentrale Dokumentenablage
+
+Dokumente müssen nicht zwingend in der Datenbank gespeichert werden.
+
+Stattdessen können Referenzen auf externe Dateien gespeichert werden.
+
+Beispiel:
+
+- OneDrive-Link
+- SharePoint-Datei
+- Nextcloud-Datei
+
+---
+
+### REQ-061 Dokumentensynchronisation
+
+Änderungen an verknüpften Dokumenten sollen erkannt werden.
+
+Das System aktualisiert Metadaten und Verknüpfungen automatisch.
+
+---
+
+### REQ-062 KI-Importassistent
+
+Der Benutzer kann Dateien hochladen.
+
+Unterstützte Formate (mindestens perspektivisch):
+
+- PDF
+- CSV
+- XLSX
+- DOCX
+- ODS
+- HTML
+- TXT
+
+Die KI analysiert die Datei und erkennt automatisch relevante Informationen.
+
+---
+
+### REQ-063 Importvorschau
+
+Vor dem Speichern zeigt das System die erkannten Datensätze an.
+
+Der Benutzer entscheidet über die Übernahme.
+
+Beispiel:
+
+- Schüler erkannt
+- Fehlzeiten erkannt
+- Noten erkannt
+- Kompetenzen erkannt
+
+---
+
+### REQ-064 Dublettenerkennung
+
+Die KI erkennt mögliche doppelte Datensätze.
+
+Beispiele:
+
+- Felix Schröder
+- Felix Schroeder
+
+Der Benutzer entscheidet über die Zusammenführung.
+
+---
+
+### REQ-065 Automatische Schülerzuordnung
+
+Die KI schlägt passende Schüler für erkannte Daten vor.
+
+Beispiele:
+
+- Dokumente
+- Fehlzeiten
+- Noten
+- Beobachtungen
+
+---
+
+### REQ-066 Importprotokoll
+
+Jeder Import wird dokumentiert.
+
+Gespeichert werden:
+
+- Datum
+- Benutzer
+- Quelldatei
+- erkannte Datensätze
+- importierte Datensätze
+- Fehler
+- Warnungen
+
+---
+
+### REQ-067 Universeller Schulsoftware-Import
+
+Importe sollen unabhängig von einer bestimmten Schulsoftware möglich sein.
+
+Beispiele:
+
+- WebUntis
+- IServ
+- Schulmanager
+- TeacherTool
+- TeacherStudio
+- Excel-Listen
+- PDF-Auswertungen
+
+Die KI unterstützt die Erkennung unbekannter Formate.
+
+---
+
+### REQ-068 KI-gestützte Schnellerfassung
+
+Nach dem Unterricht können unstrukturierte Stichpunkte eingegeben werden.
+
+Beispiel:
+
+Felix:
+- sehr gute Mitarbeit
+
+Laura:
+- Hausaufgaben vergessen
+
+Paul:
+- Präsentation gehalten
+
+Die KI erstellt daraus strukturierte Beobachtungen und ordnet diese den passenden Schülerakten zu.
+
+---
+
+### REQ-069 Intelligente Feldzuordnung
+
+Die KI erkennt automatisch die Bedeutung von Spalten in Importdateien.
+
+Beispiele:
+
+"Name" → Schülername
+
+"Fehlstunden" → Fehlzeiten
+
+"Punkte" → Bewertung
+
+"Kompetenzstand" → Kompetenzbewertung
+
+---
+
+### REQ-070 Import-Lernfunktion
+
+Das System merkt sich frühere Zuordnungen.
+
+Beispiel:
+
+Eine bestimmte WebUntis-Datei wurde bereits mehrfach importiert.
+
+Die KI verwendet die bisherige Zuordnung automatisch als Vorschlag.
+
+---
+
+### REQ-071 Dokumentenklassifikation
+
+Die KI erkennt den Dokumenttyp automatisch.
+
+Beispiele:
+
+- Klassenarbeit
+- Präsentation
+- Bewertungsbogen
+- Gesprächsprotokoll
+- Förderplan
+- Elternbrief
+
+---
+
+### REQ-072 Massenimport
+
+Mehrere Dateien können gleichzeitig importiert werden.
+
+Die KI analysiert alle Dateien und erstellt einen gemeinsamen Importvorschlag.
+
+---
+
+### REQ-073 Unsicherheitsanzeige
+
+Die KI gibt bei jedem erkannten Datensatz eine Vertrauensbewertung aus.
+
+Beispiel:
+
+- Schülerzuordnung: 98 %
+- Kompetenzzuordnung: 82 %
+- Dokumenttyp: 91 %
+
+Unsichere Zuordnungen werden hervorgehoben.
+
+---
+
+### REQ-074 Korrekturfeedback
+
+Korrekturen des Benutzers können für zukünftige Importe berücksichtigt werden.
+
+Dadurch verbessert sich die Qualität der Vorschläge im Laufe der Nutzung.
+
+---
+
+### REQ-075 Import-Testmodus
+
+Importe können zunächst simuliert werden.
+
+Es werden keine Daten gespeichert.
+
+Die Lehrkraft kann die Auswirkungen vorab prüfen.
 
 ---
 
