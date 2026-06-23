@@ -773,6 +773,39 @@ Für jede KI-Funktion kann festgelegt werden:
 - pseudonymisierte Cloud-Verarbeitung
 - vollständige Cloud-Verarbeitung
 
+### REQ-078 Stundenplan / Unterrichtstermine
+
+Das System kann regelmäßige Unterrichtstermine für Lerngruppen speichern.
+
+Beispiele:
+
+- Montag, 1./2. Stunde, 6.5 NW
+- Dienstag, 3./4. Stunde, 10c Chemie
+- Donnerstag, 5. Stunde, Tutorengruppe
+
+---
+
+### REQ-079 Terminübersicht
+
+Das System kann Unterrichtstermine in einer Wochen- oder Terminübersicht anzeigen.
+
+---
+
+### REQ-080 Automatische Unterrichtsstundenerzeugung
+
+Aus regelmäßigen Unterrichtsterminen können konkrete Unterrichtsstunden für ein Schuljahr oder Halbjahr erzeugt werden.
+
+---
+
+### REQ-081 Stundenplanänderungen
+
+Änderungen im Stundenplan können mit Gültigkeitsdatum dokumentiert werden.
+
+Beispiel:
+
+Ab 01.02.2027 findet 10c Chemie nicht mehr Dienstag 3./4., sondern Mittwoch 5./6. Stunde statt.
+
+
 ---
 
 # 6. Kann-Anforderungen
